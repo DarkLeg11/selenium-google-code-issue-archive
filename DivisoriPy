@@ -1,0 +1,79 @@
+<?php
+ 
+$Token = '966714936:AAFR4kKCAD4PrUBr4N1uvTTAB6F6pDrsNhc';
+ 
+$api = 'https://api.telegram.org/bot'.$Token;
+ 
+function sendMessage($user_id, $testo){
+ 
+$url = $GLOBALS['api'].'/sendMessage?chat_id='.$user_id.'&parse_mode=HTML&text='.urlencode($testo);
+ 
+file_get_contents($url);
+}
+ 
+$update = file_get_contents('php://input');
+$update = json_decode($update, TRUE);
+ 
+$nome = $update['message']['from']['first_name'];
+$user_id = $update['message']['from']['id'];
+$cognome = $update['message']['from']['last_name'];
+$text = $update['message']['text'];
+$username = $update['message']['from']['username'];
+$query = $update['callback_query'];
+$queryid = $query['id'];
+$queryUserId = $query['from']['id'];
+$queryusername = $query['from']['username'];
+$querydata = $query['data'];
+$querymsgid = $query['message']['message_id'];
+$inlinequery = $update['inline_query'];
+$inlineid = $inlinequery['id'];
+$inlineUserId = $inlinequery['from']['id'];
+$inlinequerydata = $inlinequery['query'];
+$chat_id_query = $update['callback_query']['from']['id'];
+$nome_query = $update['callback_query']['from']['first_name'];
+$cognome_query = $update['callback_query']['from']['last_name'];
+ 
+    $passw = 'DarkoccultGen';
+    $usern = '';
+    $link1 = "<a href='google.com'>Link Promo 1</a>";
+    $link2 = '';
+    $email = '';
+    $i = 1;
+ 
+    if($text == '/account'){
+    for($i = 0, $n = rand(7, 11); $i < $n; $i++){
+    $usern .= chr(rand(97,122));
+    }
+    for($i = 0, $n = rand(7, 11); $i < $n; $i++){
+  $email .= chr(rand(97,122));
+  }
+    SendMessage($user_id,"<b>Username:</b> <code>$usern</code> \n<b>Password:</b> <code>$passw</code> \n<b>Combo:</b> <pre>$email"."@hi2"."."."in</pre>".";"."<pre>$passw</pre>");
+}
+
+if($text == '/dazn'){
+    for($i = 0, $n = rand(7, 11); $i < $n; $i++){
+    $usern .= chr(rand(97,122));
+    }
+    for($i = 0, $n = rand(7, 11); $i < $n; $i++){
+  $email .= chr(rand(97,122));
+  }
+    SendMessage($user_id,"<b>Combo:</b> <pre>$email"."@gmail.com </pre>;<pre>$passw</pre>");
+}
+ 
+ 
+
+    if($text == '/accountplus'){
+    $accountplus = $usern.strval($i);
+    SendMessage($user_id,'<pre>'.$accountplus.'</pre>');
+    $i++;
+    }
+ 
+    if($text == '/reset'){
+    SendMessage($user_id,'Username Aggiuntivi Resettati');
+    $i = 0;
+    }
+   
+    if($text == '/link'){
+        SendMessage($user_id, $link1.'\n'.$link2);
+    }
+?>
